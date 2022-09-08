@@ -65,5 +65,10 @@ export interface IJudicialCasesItemAdd {
   end: string;
   area_id: number;
 }
+
+export type CreateCaseData = {
+  dataCases: IJudicialCasesItemAdd
+}
+
 export type WrapResponseAddJudicialCase = IResponse<IJudicialCasesItem>;
 export type WrapResponseGetListJudicialCases = IResponse<IJudicialCasesItem[]>;

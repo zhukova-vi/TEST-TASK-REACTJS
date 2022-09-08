@@ -1,10 +1,11 @@
-import { IJudicialCases } from './types';
+import { IJudicialCases, IJudicialCasesItemAdd } from './types';
 
 export enum ActionType {
   SET_SELECTED_JUDICIAL_CASE_ID = 'SET_SELECTED_JUDICIAL_CASE_ID',
   LOAD_JUDICIAL_CASES = 'LOAD_JUDICIAL_CASES',
   SET_JUDICIAL_CASES = 'SET_JUDICIAL_CASES',
   DELETE_JUDICIAL_CASES = 'DELETE_JUDICIAL_CASES',
+  ADD_JUDICIAL_CASES = 'ADD_JUDICIAL_CASES',
 }
 export interface ISetSelectedJudicialCaseId {
   type: ActionType.SET_SELECTED_JUDICIAL_CASE_ID;
@@ -26,8 +27,14 @@ export interface IDeleteJudicialCases {
   payload: { id: number };
 }
 
+export interface IAddJudicialCases {
+  type: ActionType.ADD_JUDICIAL_CASES;
+  payload: IJudicialCasesItemAdd;
+}
+
 export type Action =
   | ISetSelectedJudicialCaseId
   | ISetJudicialCases
   | ILoadJudicialCases
+  | IAddJudicialCases
   | IDeleteJudicialCases;

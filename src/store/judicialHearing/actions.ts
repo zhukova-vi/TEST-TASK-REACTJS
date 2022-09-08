@@ -7,7 +7,7 @@ import {
   IJudicialCaseData,
   IDataLoadFileRequest,
   IParticipants,
-  IDataLoadDocxFileRequest, IDocument, ICreateCaseDTO,
+  IDataLoadDocxFileRequest, IDocument,
 } from './types';
 export type History = RouteComponentProps['history'];
 
@@ -133,10 +133,5 @@ export const deleteDocument = (id: number) => ({
   type: ActionType.DELETE_DOCUMENT,
   payload: id
 })
-
-export const addJudicalCase = (data: ICreateCaseDTO) => ({
-  type: ActionType.ADD_JUDICIAL_CASES,
-  payload: data,
-});
 
 //----

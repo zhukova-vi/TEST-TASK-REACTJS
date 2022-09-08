@@ -105,14 +105,10 @@ const JudicialHearingReducer = (state = INIT_STATE, action: Action) => {
         selectedDocument: null,
         documentText: undefined,
       };
-    case ActionType.ADD_JUDICIAL_CASES:
-      return {
-        ...state,
-      };
-
-    default:
-      return state;
-  }
+  
+      default:
+        return state;
+    }
 };
 
 export default JudicialHearingReducer;

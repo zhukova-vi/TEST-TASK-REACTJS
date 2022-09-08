@@ -1,5 +1,5 @@
 import { ActionType } from './actionTypes';
-import { IJudicialCasesItem } from './types';
+import { IJudicialCasesItem, IJudicialCasesItemAdd } from './types';
 
 export const setSelectedJudicialCaseId = (caseId: string) => ({
   type: ActionType.SET_SELECTED_JUDICIAL_CASE_ID,
@@ -19,4 +19,9 @@ export const setJudicialCases = (list: IJudicialCasesItem[]) => ({
 export const deleteJudicialCases = (id: number) => ({
   type: ActionType.DELETE_JUDICIAL_CASES,
   payload: id,
+});
+
+export const addJudicalCase = (data: IJudicialCasesItemAdd) => ({
+  type: ActionType.ADD_JUDICIAL_CASES,
+  payload: data,
 });

@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { Field, useField } from 'formik';
+import { useEffect, useState } from 'react';
 import { Col, Input, Label, Row } from 'reactstrap';
 import { ICreateCaseModal } from './CreateCaseModal.types';
 import { CreateCaseModalField } from './CreateCaseModalField';
@@ -15,8 +16,16 @@ export const CreateCaseModalSetField = ({
     values,
     isLegalPerson
 }: CreateCaseModalFieldSetProps) => {
-    
-    const [equalityOfAddresses, setequalityOfAddresses] = useState(false);
+
+    const [sameOfAddresses, seteSameOfAddresses] = useState(false);
+    const [, , mailingHelpers] = useField(`${prefixfieldName}Mailing_address`);
+    const [, legalMeta] = useField(`${prefixfieldName}Legal_address`);
+    const { value } = legalMeta;
+    const { setValue } = mailingHelpers;
+
+    useEffect(() => {
+        sameOfAddresses && setValue(value);
+    }, [sameOfAddresses, value])
 
     return (
         <Col>
@@ -42,16 +51,13 @@ export const CreateCaseModalSetField = ({
                     {/* Почтовый адрес совпадает с юридическим */}
                     <Row>
                         <Col></Col>
-                        <Col>
-                            <Input type='checkbox' onChange={() => setequalityOfAddresses(prevState => !prevState)} />
-                            <Label> Почтовый адрес совпадает с юридическим</Label>
+                        <Col style={{ display: 'flex', gap: '5px' }}>
+                            <Input className='modal-chexkbox-min' type='checkbox' onChange={() => seteSameOfAddresses(prevState => !prevState)} />
+                            <Label > Почтовый адрес совпадает с юридическим</Label>
                         </Col>
                     </Row>
 
-                    <CreateCaseModalField
-                        label='Почтовый адрес'
-                        fieldName='plaintiffMailing_address'
-                        value={values.plaintiffMailing_address} />
+                    <CreateCaseModalField label='Почтовый адрес' fieldName={`${prefixfieldName}Mailing_address`} value={values[`${prefixfieldName}Mailing_address`]} />
                     <CreateCaseModalField label='КПП' fieldName={`${prefixfieldName}Kpp`} value={values[`${prefixfieldName}Kpp`]} />
                     <CreateCaseModalField label='Р/с' fieldName={`${prefixfieldName}Pc`} value={values[`${prefixfieldName}Pc`]} />
                     <CreateCaseModalField label='Банк' fieldName={`${prefixfieldName}Bank`} value={values[`${prefixfieldName}Bank`]} />

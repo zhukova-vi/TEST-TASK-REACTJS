@@ -29,6 +29,7 @@
     "react-dropzone": "^11.4.2",
     "react-flatpickr": "^3.10.13",
     "react-hotkeys": "^2.0.0",
+    "react-input-mask": "^2.0.4",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
@@ -44,7 +45,7 @@
     "web-vitals": "^1.0.1",
     "yup": "^0.32.11"
   },
- "resolutions": {
+  "resolutions": {
     "@types/react": "17.0.44"
   },
   "scripts": {

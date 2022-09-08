@@ -5,7 +5,7 @@ import {
   IJudicialHearingData,
   IParticipants,
   IJudicialCaseData,
-  IDataInfoJudicialHearingRequest, IDocument, ICreateCaseDTO,
+  IDataInfoJudicialHearingRequest, IDocument,
 } from './types';
 export type History = RouteComponentProps['history'];
 
@@ -14,7 +14,6 @@ export enum ActionType {
   ADD_AUDIO_FILE = 'ADD_AUDIO_FILE',
   ADD_DOCX_FILE = 'ADD_DOCX_FILE',
   ADD_JUDICIAL_HEARING = 'ADD_JUDICIAL_HEARING',
-  ADD_JUDICIAL_CASES = 'ADD_JUDICIAL_CASES',
   DELETE_JUDICIAL_HEARING = 'DELETE_JUDICIAL_HEARING',
   GET_INFO_HEARING = 'GET_INFO_HEARING',
   GET_INFO_HEARING_CASE = 'GET_INFO_HEARING_CASE',
@@ -135,10 +134,6 @@ export interface IDeleteDocument {
   payload: number
 }
 
-export interface IAddJudicialCases {
-  type: ActionType.ADD_JUDICIAL_CASES;
-  payload: ICreateCaseDTO;
-}
 
 export type Action =
   | ISetSelectedJudicialHearingId
@@ -157,5 +152,4 @@ export type Action =
   | ISetSelectedDocument
   | IUpdateDocumentText
   | IDeleteDocument
-  | IAddJudicialCases
   ;

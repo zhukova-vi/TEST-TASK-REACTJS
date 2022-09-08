@@ -3,7 +3,7 @@ import { RootState } from 'store/reducers';
 import { getCaseNumber } from '../judicialCases/selectors';
 import { getSecondsAsTime } from 'utils/app_helper';
 import { DEFAULT_COLORS } from 'constants/app_сonstants';
-import { CreateCaseData, IJudicialHearing, IParticipants } from './types';
+import { IJudicialHearing, IParticipants } from './types';
 
 const getState = (rootState: RootState) => {
   return rootState.JudicialHearing;
@@ -192,19 +192,6 @@ export const getTilteWithHearingIdAndCaseName = (state: RootState) => {
 //     }
 //   }
 // ))
-
-export const getDataCases = createSelector(
-  getState,
-  (state: CreateCaseData) => {
-    const data = state.dataCases;
-
-    if (data) {
-      return { ...data };
-    }
-
-    return undefined;
-  },
-);
 
 export const getSelectedDocument = createSelector(
   getState,

@@ -41,8 +41,10 @@ const CreateCaseModal = ({ areaId, isOpenModal, closeModal, addJudicalCase }: Cr
         initialValues={INITIAL_VALUE_CASE_FOR_FORM}
         onSubmit={(values) => {
           const dataSend = createCaseModalDataSend(areaId, values, plaintiffIsLegalPerson, defendantIsLegalPerson)
-          addJudicalCase(dataSend);
-          closeModal();
+          console.log(dataSend);
+
+          // addJudicalCase(dataSend);
+          // closeModal();
         }}>
         {({ values, handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
@@ -53,7 +55,7 @@ const CreateCaseModal = ({ areaId, isOpenModal, closeModal, addJudicalCase }: Cr
                   <CreateCaseModalField label='Номер' fieldName='case_id' value={values.case_id} />
                 </Col>
                 <Col>
-                  <Row >
+                  <Row className='flexBase'>
                     <Col><strong>Дата:</strong></Col>
                     <Col>
                       <CreateCaseModalField fieldType='date' fieldName='date' value={values.date} />
@@ -64,7 +66,7 @@ const CreateCaseModal = ({ areaId, isOpenModal, closeModal, addJudicalCase }: Cr
               </Row>
               <Row className='mb-2'>
                 <Col>
-                  <Row>
+                  <Row className='flexBase'>
                     <Col>
                       <Label> <strong>Истец:</strong></Label>
                     </Col>
@@ -75,7 +77,7 @@ const CreateCaseModal = ({ areaId, isOpenModal, closeModal, addJudicalCase }: Cr
                   </Row>
                 </Col>
                 <Col>
-                  <Row>
+                  <Row className='flexBase'>
                     <Col>
                       <Label> <strong>Ответчик:</strong></Label>
                     </Col>

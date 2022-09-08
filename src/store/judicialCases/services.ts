@@ -1,6 +1,6 @@
 import axiosApi from 'utils/api_helper';
 import { SERVER_URL, ENDPOINTS } from 'constants/api_endpoints';
-import { IJudicialCasesItem } from './types';
+import { IJudicialCasesItem, IJudicialCasesItemAdd } from './types';
 
 export default class JudicialCases {
   static async getJudicialCases(areaId: number) {
@@ -22,5 +22,11 @@ export default class JudicialCases {
     return axiosApi.delete(
       `${SERVER_URL}/${ENDPOINTS.JUDICIAL_CASES}/delete/${id}`,
     );
+  }
+  
+  static async addJudicalCase(data: IJudicialCasesItemAdd) {
+    const dataToSubmit = JSON.stringify(data)
+
+    return axiosApi.post(`${SERVER_URL}/${ENDPOINTS.JUDICIAL_CASES}/add`, dataToSubmit);
   }
 }

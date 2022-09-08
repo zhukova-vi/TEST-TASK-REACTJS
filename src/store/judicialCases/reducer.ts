@@ -32,6 +32,11 @@ const JudicialCasesReducer = (state = initialState, action: Action) => {
         ...state,
         isPreloader: action.payload,
       };
+      
+      case ActionType.ADD_JUDICIAL_CASES:
+        return {
+          ...state,
+        };
 
     default:
       return state;

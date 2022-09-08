@@ -24,7 +24,6 @@ import {
   IUpdateDocumentText,
   IUpdateModeHearing,
   IDeleteDocument,
-  IAddJudicialCases,
 } from './actionTypes';
 import {
   setListHearings,
@@ -304,16 +303,6 @@ function* deleteDocument({ payload }: IDeleteDocument) {
   }
 }
 
-function* addJudicalCase({ payload }: IAddJudicialCases) {
-  try {
-    yield call(JudicialHearings.addJudicalCase, payload);
-    yield put(setRedirect(true));
-    yield delay(200);
-    yield put(setRedirect(false));
-  } catch (e) {
-    console.log(e);
-  }
-}
 
 function* JudicialHearingsSaga() {
   yield takeEvery(ActionType.GET_INFO_HEARING, getInfoJudicialHearing);
@@ -332,7 +321,6 @@ function* JudicialHearingsSaga() {
   yield takeEvery(ActionType.UPDATE_HEARING_STATUS, updateModeHearing);
   yield takeEvery(ActionType.UPDATE_DOCUMENT_TEXT, updateDocumentText);
   yield takeEvery(ActionType.DELETE_DOCUMENT, deleteDocument);
-  yield takeEvery(ActionType.ADD_JUDICIAL_CASES, addJudicalCase);
 }
 
 export default JudicialHearingsSaga;

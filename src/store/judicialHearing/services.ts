@@ -8,7 +8,6 @@ import {
   IDataUpdateJudicialCaseRequest,
   IDataInfoJudicialHearingRequest,
   IDataLoadDocxFileRequest,
-  ICreateCaseDTO,
 } from './types';
 
 export default class JudicialHearings {
@@ -102,9 +101,4 @@ export default class JudicialHearings {
     )
   }
 
-  static async addJudicalCase(data: ICreateCaseDTO) {
-    const dataToSubmit = JSON.stringify(data)
-
-    return axiosApi.post(`${SERVER_URL}/${ENDPOINTS.JUDICIAL_CASES}/add`, dataToSubmit);
-  }
 }

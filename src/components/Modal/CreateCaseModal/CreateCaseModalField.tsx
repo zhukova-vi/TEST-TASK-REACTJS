@@ -1,12 +1,12 @@
-import { Field} from 'formik';
-import {Col, Row} from 'reactstrap';
+import { Field } from 'formik';
+import { Col, Row } from 'reactstrap';
 
 type CreateCaseModalFieldProps = {
     label?: string
     fieldType?: string
     fieldName: string
     value: string | boolean
-    onChange?: () => void
+    onChange?: (event) => void
 }
 
 export const CreateCaseModalField = ({
@@ -19,14 +19,14 @@ export const CreateCaseModalField = ({
 
 
     return (
-        <Row className='mb-2'>
-            <Col>{label}</Col>
+        <Row className='mb-2 flexBase'>
+            <Col >{label}</Col>
             <Col>
                 <Field className='form-control'
                     type={fieldType}
                     name={fieldName}
                     value={value}
-                // onChange={onChange}
+                //onChange={onChange}
                 />
             </Col>
         </Row>
