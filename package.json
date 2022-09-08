@@ -16,6 +16,7 @@
     "formik": "^2.2.9",
     "generate-password": "^1.7.0",
     "html-docx-js": "^0.3.1",
+    "imask": "^6.4.2",
     "metismenujs": "^1.3.0",
     "node-sass": "6",
     "petrovich": "^0.2.1",

@@ -26,7 +26,6 @@ export const CreateCaseModalField = ({
                     type={fieldType}
                     name={fieldName}
                     value={value}
-                //onChange={onChange}
                 />
             </Col>
         </Row>

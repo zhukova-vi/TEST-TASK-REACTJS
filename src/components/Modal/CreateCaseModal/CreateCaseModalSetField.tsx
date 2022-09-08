@@ -3,13 +3,15 @@ import { useEffect, useState } from 'react';
 import { Col, Input, Label, Row } from 'reactstrap';
 import { ICreateCaseModal } from './CreateCaseModal.types';
 import { CreateCaseModalField } from './CreateCaseModalField';
+import MaskedInput from "react-text-mask";
+import { phoneNumberMask } from './CreateCaseModal.const';
+
 
 type CreateCaseModalFieldSetProps = {
     prefixfieldName: string
     values: ICreateCaseModal
     isLegalPerson: boolean
 }
-
 
 export const CreateCaseModalSetField = ({
     prefixfieldName,
@@ -38,9 +40,24 @@ export const CreateCaseModalSetField = ({
                     <CreateCaseModalField label='Дата рождения' fieldType='date' fieldName={`${prefixfieldName}Birthday`} value={values[`${prefixfieldName}Birthday`]} />
                     <CreateCaseModalField label='Адрес регистрации' fieldName={`${prefixfieldName}Reg_address`} value={values[`${prefixfieldName}Reg_address`]} />
                     <CreateCaseModalField label='Адрес проживания' fieldName={`${prefixfieldName}Res_address`} value={values[`${prefixfieldName}Res_address`]} />
-                    <CreateCaseModalField label='Номер телефона' fieldName={`${prefixfieldName}Phone`} value={values[`${prefixfieldName}Phone`]} />
+                    <Row className='mb-2 flexBase'>
+                        <Col>Номер телефона</Col>
+                        <Col>
+                            <Field
+                                name={`${prefixfieldName}Phone`}
+                                value={values[`${prefixfieldName}Phone`]}
+                                render={({ field }) => (
+                                    <MaskedInput
+                                        {...field}
+                                        mask={phoneNumberMask}
+                                        id="phone"
+                                        type="text"
+                                        className='form-control'
+                                    />
+                                )}
+                            /></Col>
+                    </Row>
                 </div>}
-
             {/* Юр.лицо*/}
             {isLegalPerson &&
                 <div>
@@ -48,7 +65,6 @@ export const CreateCaseModalSetField = ({
                     <CreateCaseModalField label='ОГРН' fieldName={`${prefixfieldName}Ogrn`} value={values[`${prefixfieldName}Ogrn`]} />
                     <CreateCaseModalField label='Название компании' fieldName={`${prefixfieldName}Company`} value={values[`${prefixfieldName}Company`]} />
                     <CreateCaseModalField label='Юридический адрес' fieldName={`${prefixfieldName}Legal_address`} value={values[`${prefixfieldName}Legal_address`]} />
-                    {/* Почтовый адрес совпадает с юридическим */}
                     <Row>
                         <Col></Col>
                         <Col style={{ display: 'flex', gap: '5px' }}>

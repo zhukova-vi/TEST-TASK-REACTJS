@@ -41,10 +41,8 @@ const CreateCaseModal = ({ areaId, isOpenModal, closeModal, addJudicalCase }: Cr
         initialValues={INITIAL_VALUE_CASE_FOR_FORM}
         onSubmit={(values) => {
           const dataSend = createCaseModalDataSend(areaId, values, plaintiffIsLegalPerson, defendantIsLegalPerson)
-          console.log(dataSend);
-
-          // addJudicalCase(dataSend);
-          // closeModal();
+          addJudicalCase(dataSend);
+          closeModal();
         }}>
         {({ values, handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
@@ -71,7 +69,7 @@ const CreateCaseModal = ({ areaId, isOpenModal, closeModal, addJudicalCase }: Cr
                       <Label> <strong>Истец:</strong></Label>
                     </Col>
                     <Col style={{ display: 'flex', gap: '10px' }}>
-                      <Input type='checkbox' onChange={() => setPlaintiffIsLegalPerson(prevState => !prevState)} />
+                      <Input className='modal-chexkbox-min' type='checkbox' onChange={() => setPlaintiffIsLegalPerson(prevState => !prevState)} />
                       <Label>Юридическое лицо</Label>
                     </Col>
                   </Row>
@@ -82,7 +80,7 @@ const CreateCaseModal = ({ areaId, isOpenModal, closeModal, addJudicalCase }: Cr
                       <Label> <strong>Ответчик:</strong></Label>
                     </Col>
                     <Col style={{ display: 'flex', gap: '10px' }}>
-                      <Input type='checkbox' checked={defendantIsLegalPerson} onChange={() => setDefendantIsLegalPerson(prevState => !prevState)} />
+                      <Input className='modal-chexkbox-min' type='checkbox' checked={defendantIsLegalPerson} onChange={() => setDefendantIsLegalPerson(prevState => !prevState)} />
                       <Label>Юридическое лицо</Label>
                     </Col>
                   </Row>
